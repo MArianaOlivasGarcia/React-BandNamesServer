@@ -10,42 +10,8 @@
 </head>
 <body class="container">
     
-    <h1 class="mt-5">MiniChat</h1>
 
-
-    <form id="miFormulario">
-        <div class="row">
-
-            <div class="col-8">
-                <input type="text" 
-                    class="form-control" 
-                    id="txtMensaje" 
-                    placeholder="Mensaje">
-            </div>
-
-
-            <div class="col-4">
-                <button    type="submit"
-                        class="btn btn-primary">Enviar</button>
-            </div>
-
-
-        </div>
-    </form>
-
-
-
-
-    <div class="row">
-        <div class="col">
-
-            <ul id="misMensajes" class="mt-2">
-            </ul>
-
-        </div>
-    </div>
-
-
+    <h1>Acceso denegado</h1>
 
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.0/socket.io.js" integrity="sha512-nYuHvSAhY5lFZ4ixSViOwsEKFvlxHMU2NHts1ILuJgOS6ptUmAGt/0i5czIgMOahKZ6JN84YFDA+mCdky7dD8A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -53,22 +19,8 @@
     <script>
         const socket = io('http://localhost:8000')
 
-        
-        const form = document.querySelector('#miFormulario')
-        const mensajes = document.querySelector('#misMensajes')
-        const txtMensaje = document.querySelector('#txtMensaje')
-
-        form.addEventListener( 'submit', (e) => {
-            e.preventDefault();
-
-            const mensaje = txtMensaje.value;
-
-            socket.emit('message', { mensaje })
-
-        })
-
-        socket.on('message-from-server', ( payload ) => {
-            mensajes.innerHTML += `<li>${ payload.mensaje }</li>`;
+        socket.on('current-bands', ( payload ) => {
+            console.log(payload)
         })
 
 
